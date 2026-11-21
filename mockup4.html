@@ -110,7 +110,7 @@ th.c,td.c{text-align:center;width:74px}
 </style>
 <style>
 /* Dialoge im Streamlit-iframe: Kopf fix, Inhalt scrollbar, nicht höher als sichtbarer Bereich */
-dialog{display:flex;flex-direction:column;max-height:92vh;top:4vh;margin-top:4vh}
+dialog[open]{display:flex;flex-direction:column;max-height:92vh;top:4vh;margin-top:4vh}
 .dh,.sheetbar{flex:0 0 auto}
 .db,#sbd{overflow:auto;-webkit-overflow-scrolling:touch;flex:1 1 auto;min-height:0}
 </style>
@@ -157,7 +157,11 @@ const ALL = window.R_DATA ? window.R_DATA : [
 let ROLE="sb",ME=(window.R_DATA&&ALL.length?(function(){const c={};ALL.forEach(x=>c[x.sw]=(c[x.sw]||0)+1);return Object.keys(c).sort((a,b)=>c[b]-c[a])[0];})():"Marco Steiner"),R=ALL.filter(c=>c.sw===ME);
 // «Dringend»-Hinweistexte sind erfunden – bei echten Daten leer lassen (keine erfundenen Begründungen).
 const U = window.R_DATA ? {} : {0:{step:"Intensivkurs und Prüfung organisieren",why:"Frist für das Sprachziel in 3 Monaten (15.02.2027). Letzter Stand: A0 (17.05.2024). Kein laufender Sprachkurs."}};
-const _hs=document.querySelector("header h1 small"); if(window.R_DATA&&_hs)_hs.textContent="Asylsozialdienst Stadt Bern · Fallführung: "+ME+" (Demodaten)";
+// Fallführung-Name überall aus den Daten (ME), nicht fest verdrahtet.
+if(window.R_DATA){
+  const _hs=document.querySelector("header h1 small"); if(_hs)_hs.textContent="Asylsozialdienst Stadt Bern · Fallführung: "+ME+" (Demodaten)";
+  const _ro=document.querySelector('#role option[value="sb"]'); if(_ro)_ro.textContent="Fallführung · "+ME;
+}
 const $=s=>document.querySelector(s);
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const fd=s=>s?new Date(s).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit",year:"numeric"}):"–";
@@ -281,7 +285,7 @@ function sheet(c,lg){
  return `<div class="a4"><div class="t2"><h1>${DE.title}</h1><h1 class="${rtl}">${t.title}</h1></div><div class="t2 sub"><span>${DE.sub}</span><span class="${rtl}">${t.sub}</span></div>
  <p>${DE.name} / ${t.name}: <span class="ln">&nbsp;</span> &nbsp;·&nbsp; ${DE.nr} / ${t.nr}: <b>${c.cn}</b> &nbsp;·&nbsp; ${DE.date} / ${t.date}: <b>${fd("2026-11-21")}</b></p>
  <div class="rw" style="border:0"><div>${DE.intro}</div><div class="${rtl}">${t.intro}</div></div>${svg}${box}
- <div class="foot"><div>${DE.contact}: <b>Marco Steiner</b><br>Asylsozialdienst Stadt Bern<br>${DE.foot}</div><div class="${rtl}">${t.contact}: <b>Marco Steiner</b><br>${t.foot}</div></div></div>`}
+ <div class="foot"><div>${DE.contact}: <b>${c.sw}</b><br>Asylsozialdienst Stadt Bern<br>${DE.foot}</div><div class="${rtl}">${t.contact}: <b>${c.sw}</b><br>${t.foot}</div></div></div>`}
 $("#lg").onchange=e=>openWeg(WC.id,e.target.value);
 $("#pr").onclick=()=>window.print();$("#sx").onclick=()=>$("#sheet").close();
 function showTab(t){document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===t));$("#ov").hidden=t!=="ov";$("#cl").hidden=t!=="cl"}
@@ -319,7 +323,7 @@ function renderMg(){
 }
 function setRole(r){ROLE=r;R=r==="mg"?ALL:ALL.filter(c=>c.sw===ME);const n=document.querySelectorAll("nav button");
  n[0].textContent=r==="mg"?"Bericht":"Übersicht";n[1].textContent=r==="mg"?"Alle Klient:innen":"Klient:innen";
- $("#sub").textContent=r==="mg"?"Asylsozialdienst Stadt Bern · Management, alle Fallführungen (Beispieldaten)":"Asylsozialdienst Stadt Bern · Fallführung: Marco Steiner (Beispieldaten)";
+ $("#sub").textContent=r==="mg"?("Asylsozialdienst Stadt Bern · Management, alle Fallführungen"+(window.R_DATA?" (Demodaten)":" (Beispieldaten)")):("Asylsozialdienst Stadt Bern · Fallführung: "+ME+(window.R_DATA?" (Demodaten)":" (Beispieldaten)"));
  cal={y:2026,m:10};CF=null;showTab("ov");renderOv();renderCl()}
 $("#role").onchange=e=>setRole(e.target.value);
 renderOv();renderCl();
