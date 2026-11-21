@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Integrations-Cockpit · Mockup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600&display=swap">
+<style>
+:root{--bg:#F3F4F2;--card:#fff;--ink:#1D2733;--mute:#5E6B79;--line:#DCE0E4;--brand:#23406B;--brand-ink:#fff;--g:#2E7D4F;--y:#D9A200;--r:#C0392B;--x:#7A1F17;--n:#8A94A0;--soft:#EAEEF3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14191F;--card:#1D242C;--ink:#E7EBEF;--mute:#9AA7B4;--line:#33404D;--brand:#8DB1E8;--brand-ink:#10243F;--g:#5BBF84;--y:#EBBB2E;--r:#EE7A6C;--x:#F0907F;--n:#8A94A0;--soft:#27313B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14191F;--card:#1D242C;--ink:#E7EBEF;--mute:#9AA7B4;--line:#33404D;--brand:#8DB1E8;--brand-ink:#10243F;--g:#5BBF84;--y:#EBBB2E;--r:#EE7A6C;--x:#F0907F;--n:#8A94A0;--soft:#27313B;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;margin:0}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar{max-width:1180px;margin:auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.bar h1{font-size:21px;flex:1 1 220px}
+.bar small{display:block;font:400 14px "Source Sans 3",sans-serif;color:var(--mute)}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:7px 14px}
+.btn.p{background:var(--brand);color:var(--brand-ink);border-color:var(--brand);font-weight:600}
+.btn:hover{border-color:var(--brand)}
+nav{max-width:1180px;margin:auto;padding:0 20px;display:flex;gap:4px}
+nav button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 16px;color:var(--mute);font-weight:600}
+nav button[aria-selected=true]{color:var(--ink);border-color:var(--brand)}
+main{max-width:1180px;margin:auto;padding:22px 20px 60px}
+.goals{display:grid;gap:14px}.goal{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,2fr);gap:20px;align-items:center}@media(max-width:860px){.goal{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{font-size:19px}.rule{color:var(--mute);font-size:14px;margin:2px 0 14px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.stack{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--soft);margin:0 0 14px}
+.stack i{display:block}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.tile{min-height:96px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 8px 6px;color:var(--ink)}
+.tile b{font:600 26px/1 "Source Serif 4",Georgia,serif;display:block}
+.tile span{font-size:13px;color:var(--mute);line-height:1.2;display:block;margin-top:4px}
+.tile:hover{border-color:var(--brand)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:30px 0 12px}
+.sec h2{font-size:22px}
+.task{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.task:first-child{border-top:0}
+.date{font-weight:700}.date small{display:block;font-weight:400;color:var(--mute)}
+.tag{font-size:13px;border:1px solid var(--line);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.link{background:none;border:0;color:var(--brand);font-weight:600;padding:0;text-align:left}
+.link:hover{text-decoration:underline}
+.tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.tools input{flex:1 1 260px;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:start}
+@media(max-width:860px){.split{grid-template-columns:1fr}.task{grid-template-columns:80px 1fr}.task .tag{grid-column:2}}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:13px;color:var(--mute);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr.row{cursor:pointer}tr.row:hover,tr.sel{background:var(--soft)}
+.name{font-weight:600}.hh{font-size:13px;color:var(--mute)}
+.lights{display:flex;gap:5px}.lights .dot{margin:0;width:13px;height:13px}
+.empty{color:var(--mute);padding:40px 10px;text-align:center}
+.dos h2{font-size:23px}.meta{color:var(--mute);font-size:14.5px;margin:2px 0 14px}
+.blk{border-top:1px solid var(--line);padding:14px 0}.blk h3{font-size:17px;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
+dl{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;margin:0}dt{color:var(--mute);font-size:14.5px}dd{margin:0}
+.sub{margin:8px 0 0;padding:0;list-style:none}.sub li{display:flex;gap:8px;padding:3px 0;font-size:15px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:6px;padding:3px 10px;margin:0 6px 6px 0;cursor:pointer;background:var(--bg);color:var(--ink);font-size:14.5px}
+dialog{border:0;border-radius:12px;padding:0;width:min(780px,94vw);max-height:88vh;background:var(--card);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,15,20,.55)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card)}
+.db{padding:6px 22px 22px}
+.cmp{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:0}
+.cmp div{padding:8px 8px;border-bottom:1px solid var(--line)}.cmp .h{font-size:13px;color:var(--mute);font-weight:600}
+.note{background:var(--soft);border-radius:8px;padding:10px 14px;font-size:14.5px;margin:14px 0}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+#toast.on{opacity:1}
+.mock{font-size:13px;color:var(--mute);margin-top:30px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+th.c,td.c{text-align:center;width:74px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .wd{font-size:13px;color:var(--mute);text-align:center;padding:4px}
+.day{min-height:62px;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:var(--bg);text-align:left;color:var(--ink);display:flex;flex-direction:column;gap:3px}
+.day.out{visibility:hidden}.day.today{border:2px solid var(--brand)}.day.ev{cursor:pointer;background:var(--card)}.day.ev:hover{border-color:var(--brand)}
+.day .dots{display:flex;flex-wrap:wrap;gap:3px}.day .dots .dot{margin:0;width:9px;height:9px}
+.months{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.months button{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:5px 10px;color:var(--ink);min-width:62px;text-align:left}
+.months button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.months small{display:block;font-size:12px;opacity:.8}
+.urg{color:var(--r);border-color:var(--r);font-weight:600}
+.sheetbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line)}
+.a4{background:#fff;color:#1D2733;max-width:720px;margin:18px auto;padding:34px 38px;border:1px solid #DCE0E4;font-family:"Source Sans 3","Segoe UI",Arial,sans-serif}
+.a4 h1{font-size:34px;margin:0}.a4 .t2{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.a4 .sub{color:#5E6B79;font-size:15px;margin:2px 0 12px}
+.ln{border-bottom:1px solid #999;display:inline-block;min-width:170px}
+.a4 .bx{border:2px solid #1D2733;border-radius:12px;padding:10px 14px;margin:12px 0;break-inside:avoid}
+.a4 .bx h3{font-size:18px;display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}
+.a4 .rw{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:5px 0;border-top:1px dashed #C5CBD2;font-size:15px}
+.a4 .rw:first-of-type{border-top:0}
+.a4 .rw>div+div{unicode-bidi:plaintext}.a4 .rtl{direction:rtl;text-align:right}
+.bd{display:inline-block;font-weight:700;font-size:13px;border-radius:20px;padding:0 8px;margin-right:6px;background:#EAEEF3;white-space:nowrap}
+.rtl .bd{margin:0 0 0 6px}
+.gk{background:#D5ECDD}.yl{background:#FBEFC2}
+.a4 .foot{border-top:2px solid #1D2733;margin-top:16px;padding-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media print{header,main,#toast,.noprint,#dlg{display:none!important}body{background:#fff}dialog{position:static;box-shadow:none;width:auto;max-height:none;margin:0}dialog::backdrop{display:none}.a4{border:0;margin:0;max-width:none}@page{size:A4;margin:14mm}}
+.gt{min-width:860px}.gr{display:grid;grid-template-columns:210px 1fr;align-items:center;border-top:1px solid var(--line)}
+.gl{padding:5px 8px;text-align:left;line-height:1.25}
+.trk{position:relative;height:34px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100%/12 - 1px),var(--line) calc(100%/12 - 1px),var(--line) calc(100%/12))}
+.gb{position:absolute;top:10px;height:14px;border:0;border-radius:7px;opacity:.85;cursor:pointer;padding:0}.gb:hover{opacity:1;outline:2px solid var(--ink)}
+.dm{position:absolute;top:5px;transform:translateX(-50%);font-size:20px;line-height:24px;pointer-events:none}
+.td{position:absolute;top:0;bottom:0;width:2px;background:var(--brand);pointer-events:none}
+</style>
+</head>
+<body>
+<header>
+ <div class="bar">
+  <h1>Integrations-Cockpit<small>Asylsozialdienst Stadt Bern · Fallführung: Marco Steiner (Beispieldaten)</small></h1>
+  <button class="btn" id="imp">Excel importieren</button>
+  <button class="btn p" id="exp">Excel exportieren</button>
+ </div>
+ <nav role="tablist"><button role="tab" aria-selected="true" data-tab="ov">Übersicht</button><button role="tab" aria-selected="false" data-tab="cl">Klient:innen</button></nav>
+</header>
+<main>
+ <section id="ov"></section>
+ <section id="cl" hidden></section>
+ <p class="mock">Mockup mit erfundenen Daten. Stichtag: 21.11.2026. Alle Auswertungen zeigen Gruppenmuster, keine Bewertung einzelner Personen.</p>
+</main>
+<dialog id="dlg"><div class="dh"><h2 id="dt"></h2><button class="btn" id="dx">Schliessen</button></div><div class="db" id="dbd"></div></dialog>
+<dialog id="sheet"><div class="sheetbar noprint"><label>Sprache <select id="lg"></select></label><button class="btn p" id="pr">🖨 Drucken</button><button class="btn" id="sx">Schliessen</button></div><div class="noprint note" style="margin:10px 22px">Übersetzung aus festen Textbausteinen – keine Daten an Übersetzungsdienste oder KI. Textbausteine bitte vor dem Einsatz von einer Fachperson prüfen lassen.</div><div id="sbd"></div></dialog><div id="toast" role="status"></div>
+<script>
+const TODAY=new Date("2026-11-21");
+const ST={e:["Erreicht","--g"],t:["Auf Kurs","--y"],r:["Gefährdet","--r"],x:["Nicht erreicht, Frist abgelaufen","--x"],n:["Nicht anwendbar","--n"]};
+const GOALS=[
+ {k:0,t:"Ziel 1 · Sprache A1",rule:"Alle ab 16 J. mit VA/FL: A1-Nachweis innert 3 Jahren ab Einreise"},
+ {k:1,t:"Ziel 2 · Arbeit oder Ausbildung",rule:"≥ 60 % während 6 Monaten am Stück oder Sek II / Tertiär, vor Zuständigkeitsende"},
+ {k:2,t:"Ziel 3 · Ohne Sozialhilfe",rule:"12 Monate ohne Sozialhilfe für den ganzen Haushalt, vor Zuständigkeitsende"}];
+const D="D12.10130";
+const R = window.R_DATA ? window.R_DATA : [
+["Layla",D,"Syrien","Arabisch",0,2,39,"2024-02-15","B-FL","rtt",["2027-02-15","2029-02-15","2029-02-15"],0,"A0 (Stand 17.05.2024), kein laufender Sprachkurs","Keine Anstellung","Sozialhilfe seit Einreise",0,0,0,20357],
+["Omar (Ehemann)",D,"Syrien","Arabisch",1,10,46,"2024-02-15","B-FL","ett",["2027-02-15","2029-02-15","2029-02-15"],1,"A1 telc, erreicht am 18.09.2025","Gelegentliche Einsätze","Sozialhilfe (Haushalt)",0,0,0,20356],
+["Yusuf (Sohn)",D,"Syrien","Arabisch",0,0,4,"2024-02-15","B-FL","nnt",["","","2029-02-15"],0,"Kind, unter 16 J.","Kita","Sozialhilfe (Haushalt)",0,0,0,20358],
+["Selam Tesfay","H2","Eritrea","Tigrinya",1,11,29,"2023-11-27","VA","ttr",["2026-11-27","2029-11-27","2029-11-27"],1,"A0, Kurs besucht, Prüfung angemeldet","Praktikum 30 %","Sozialhilfe seit Einreise",30,3,0,20301],
+["Amira Haddad","H3","Syrien","Arabisch",0,12,33,"2024-03-11","B-FL","eet",["2027-03-11","2029-03-11","2029-03-11"],1,"A1 fide, erreicht am 30.06.2025","Detailhandel, 80 % seit 02.2026","Teilunterstützung",80,9,0,20302],
+["Mohammed Karimi","H5","Afghanistan","Dari",0,0,52,"2022-10-17","F-FL","xrr",["2025-10-17","2027-10-17","2027-10-17"],0,"A0, Analphabet, kein Kurs besucht","Keine Anstellung","Sozialhilfe seit Einreise",0,0,0,20303],
+["Yuliia Kovalenko","H6","Ukraine","Ukrainisch",1,15,36,"2023-02-06","S","nnn",["","",""],0,"Status S, nicht Teil der Ziele","Teilzeit 50 %","Sozialhilfe",50,12,0,20304],
+["Tigist Berhe","H7","Eritrea","Tigrinya",1,10,24,"2024-01-22","B-FL","eee",["2027-01-22","2029-01-22","2029-01-22"],1,"A1 telc, erreicht am 05.03.2025","Lehre Sek II, 2. Jahr","Ohne Sozialhilfe seit 14 Mt.",100,14,14,20305],
+["Hassan Rahimi","H4","Afghanistan","Dari",0,4,45,"2023-12-14","VA","rrr",["2026-12-14","2029-12-14","2029-12-14"],1,"A0, Kurs läuft, Prüfung offen","Keine Anstellung","Sozialhilfe seit Einreise",0,0,0,20306],
+["Nasrin Rahimi","H4","Afghanistan","Dari",0,2,40,"2023-12-14","VA","rtr",["2026-12-14","2029-12-14","2029-12-14"],0,"A0, noch kein Kurs","Keine Anstellung","Sozialhilfe seit Einreise",0,0,0,20307],
+["Ali Mahmoud","H8","Irak","Arabisch",0,12,27,"2023-12-01","B-FL","eee",["2026-12-01","2028-12-01","2028-12-01"],1,"A1 telc, erreicht am 10.04.2025","Logistik, 100 % seit 01.2025","Ohne Sozialhilfe seit 20 Mt.",100,22,20,20308],
+["Rahel Gebre","H9","Eritrea","Tigrinya",1,8,31,"2023-11-29","VA","rtt",["2026-11-29","2029-11-29","2029-11-29"],0,"A0, kein Kurs besucht","Gelegentlich, unregelmässig","Sozialhilfe seit Einreise",0,0,0,20309]
+].map((a,i)=>({id:i,n:a[0],hh:a[1],nat:a[2],mt:a[3],lat:a[4],sy:a[5],age:a[6],entry:a[7],st:a[8],g:a[9].split(""),dl:a[10],course:a[11],lang:a[12],work:a[13],fin:a[14],pens:a[15],mo:a[16],free:a[17],cn:a[18]}));
+const U={0:{step:"Intensivkurs und Prüfung organisieren",why:"Frist für das Sprachziel in 3 Monaten (15.02.2027). Letzter Stand: A0 (17.05.2024). Kein laufender Sprachkurs."}};
+const $=s=>document.querySelector(s);
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const fd=s=>s?new Date(s).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit",year:"numeric"}):"–";
+const dd=s=>Math.round((new Date(s)-TODAY)/864e5);
+const dot=c=>`<span class="dot" style="background:var(${ST[c][1]})"></span>`;
+const cnt=k=>{const o={e:0,t:0,r:0,x:0,n:0};R.forEach(c=>o[c.g[k]]++);return o};
+const MN=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+let cal={y:2026,g:-1};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)}
+function openD(title,html){$("#dt").textContent=title;$("#dbd").innerHTML=html;$("#dlg").showModal()}
+$("#dx").onclick=()=>$("#dlg").close();
+$("#dlg").addEventListener("click",e=>{if(e.target.id==="dlg")e.currentTarget.close()});
+$("#imp").onclick=()=>toast("Import: Die 11 Excel-Exporte werden hier eingelesen (Mockup).");
+$("#exp").onclick=()=>toast("Export: Änderungen werden im bisherigen Excel-Format zurückgeschrieben (Mockup).");
+function tasks(lo,hi){const o=[];R.forEach(c=>c.g.forEach((s,k)=>{if(!c.dl[k]||s==="e"||s==="n")return;const d=dd(c.dl[k]);if(d>=lo&&d<=hi)o.push({c,k,d,s})}));return o.sort((a,b)=>a.d-b.d)}
+function reason(t){const{c,k,d}=t;
+ if(d<0)return `Frist seit ${-d} Tagen abgelaufen, bitte Stand klären`;
+ if(k===0)return c.course?"Prüfung vorbereiten, Anmeldung klären":"Noch kein Sprachkurs, Kursplatz organisieren";
+ if(k===1)return "Pensum und Dauer der Anstellung prüfen";return "Ablösung von der Sozialhilfe besprechen"}
+const rel=d=>d<0?"überfällig":d===0?"heute":"in "+d+" Tagen";
+function taskRow(t){return `<div class="task"><div class="date">${fd(t.c.dl[t.k])}<small>${rel(t.d)}</small></div>
+ <div><button class="link" data-open="${t.c.id}">${t.c.n}</button><div style="font-size:14.5px;color:var(--mute)">${reason(t)}</div></div>
+ <span><span class="tag">${dot(t.s)}Ziel ${t.k+1}</span> <button class="link" data-weg="${t.c.id}">Mein Weg</button></span></div>`}
+function urgRow(c){const u=U[c.id],d=dd(c.dl[0]);return `<div class="task"><div class="date">${fd(c.dl[0])}<small>${rel(d)}</small></div>
+ <div><button class="link" data-open="${c.id}">${c.n}, Klient ${c.cn}</button> <span class="tag urg">Dringend</span><div style="font-weight:600">${u.step}</div><div style="font-size:14.5px;color:var(--mute)">${u.why}</div></div>
+ <span><span class="tag">${dot("r")}Ziel 1</span> <button class="link" data-weg="${c.id}">Mein Weg</button></span></div>`}
+function renderOv(){
+ let h=`<div class="goals">`;
+ GOALS.forEach(g=>{const o=cnt(g.k),tot=R.length-o.n;
+  h+=`<article class="card goal"><div><h3>${g.t}</h3><div class="rule">${g.rule}</div><div class="stack" aria-hidden="true">${["e","t","r","x"].map(c=>`<i style="width:${o[c]/tot*100}%;background:var(${ST[c][1]})"></i>`).join("")}</div><button class="btn p" data-det="${g.k}">Details</button></div>
+  <div class="tiles">${["e","t","r","x","n"].map(c=>`<button class="tile" data-flt="${g.k}${c}" title="Klient:innen anzeigen"><b>${o[c]}</b><span>${dot(c)}${ST[c][0]}</span></button>`).join("")}</div></article>`});
+ h+=`</div><div class="sec"><h2>Diese Woche · 23.–29.11.2026</h2><button class="btn" id="allt">Alle anstehenden Fristen</button></div><div class="card">`;
+ const w=tasks(2,8),rows=R.filter(c=>U[c.id]).map(urgRow).concat(w.map(taskRow));
+ h+=rows.join("")+`</div><div class="sec"><h2>Nächste 30 Tage</h2><button class="btn" id="allt2">Alle anstehenden Fristen</button></div><div class="card">`;
+ const n=tasks(9,30);h+=(n.length?n.map(taskRow).join(""):`<div class="empty">Keine Fristen in den nächsten 30 Tagen.</div>`)+`</div><div class="sec"><h2>Jahresübersicht der Fristen (Gantt)</h2></div><div class="card" id="calbox"></div>`;
+ $("#ov").innerHTML=h;renderCal();
+}
+function renderCal(){
+ const y=cal.y,g=cal.g,t0=new Date(y,0,1),t1=new Date(y+1,0,1),span=t1-t0;
+ const pos=d=>Math.max(0,Math.min(100,(new Date(d)-t0)/span*100));
+ const rows=[];R.forEach(c=>c.g.forEach((st,k)=>{if(st==="n"||!c.dl[k]||(g>=0&&g!==k))return;const a=new Date(c.entry),e=new Date(c.dl[k]);if(e<t0||a>=t1)return;rows.push({c,k,st,a,e})}));
+ let h=`<div class="top" style="align-items:center;margin-bottom:12px"><div style="display:flex;gap:8px;align-items:center"><button class="btn" data-cal="y-1" aria-label="Vorjahr">«</button><h3 style="min-width:70px;text-align:center">${y}</h3><button class="btn" data-cal="y+1" aria-label="Nächstes Jahr">»</button><button class="btn" data-cal="today">Heute</button></div><div class="months" style="margin:0">${["Alle Ziele","Ziel 1","Ziel 2","Ziel 3"].map((n,i)=>`<button data-cal="g=${i-1}" aria-pressed="${g===i-1}" style="min-width:0">${n}</button>`).join("")}</div></div>`;
+ h+=`<div style="font-size:14px;color:var(--mute);margin-bottom:8px">Balken: von Einreise bis Frist. ◆ = Frist. Farbe = Status. Klick öffnet das Dossier. ${rows.length} Einträge.</div><div style="overflow-x:auto"><div class="gt"><div class="gr" style="border:0"><div></div><div style="display:grid;grid-template-columns:repeat(12,1fr)">${MN.map(n=>`<div style="font-size:13px;color:var(--mute);padding:2px 0 4px;border-left:1px solid var(--line);padding-left:4px">${n.slice(0,3)}</div>`).join("")}</div></div>`;
+ h+=rows.map(r=>{const l=pos(r.a),w=Math.max(0.6,pos(r.e)-l),inY=r.e<t1,col=`var(${ST[r.st][1]})`;
+  return `<div class="gr"><button class="gl link" data-open="${r.c.id}" style="font-weight:400;color:var(--ink)"><b>${r.c.n}</b><br><span style="color:var(--mute);font-size:13px">Ziel ${r.k+1} · Frist ${fd(r.c.dl[r.k])}</span></button><div class="trk"><button class="gb" data-open="${r.c.id}" title="${r.c.n}, Ziel ${r.k+1}: ${ST[r.st][0]}, Frist ${fd(r.c.dl[r.k])}" style="left:${l}%;width:${w}%;background:${col}"></button>${inY?`<span class="dm" style="left:${pos(r.e)}%;color:${col}">◆</span>`:""}${y===2026?`<i class="td" style="left:${pos(TODAY)}%"></i>`:""}</div></div>`}).join("")||`<div class="empty">Keine Fristen in diesem Jahr.</div>`;
+ $("#calbox").innerHTML=h+`</div></div><div style="margin-top:10px;font-size:14px;color:var(--mute)">${["e","t","r","x"].map(c=>dot(c)+ST[c][0]).join(" &nbsp; ")} &nbsp; <span style="border-left:2px solid var(--brand);padding-left:6px">Heute</span></div>`;
+}
+function dayList(k){const L=[];R.forEach(c=>c.dl.forEach((x,i)=>{if(x===k)L.push({c,k:i,d:dd(x),s:c.g[i]})}));
+ openD("Fristen am "+fd(k),L.map(taskRow).join(""))}
+function analysis(k){
+ const grp={e:R.filter(c=>c.g[k]==="e"),t:R.filter(c=>c.g[k]==="t"),o:R.filter(c=>["r","x"].includes(c.g[k]))};
+ const avg=(a,f)=>a.length?(a.reduce((s,c)=>s+f(c),0)/a.length).toFixed(1).replace(".",","):"–";
+ const pc=(a,f)=>a.length?Math.round(a.filter(f).length/a.length*100)+" %":"–";
+ const top=a=>{const m={};a.forEach(c=>m[c.mt]=(m[c.mt]||0)+1);const e=Object.entries(m).sort((x,y)=>y[1]-x[1])[0];return e?e[0]:"–"};
+ const rows=[["Anzahl",a=>a.length],["Alter, Ø in Jahren",a=>avg(a,c=>c.age)],["Schuljahre vor Einreise, Ø",a=>avg(a,c=>c.sy)],["Lateinisch alphabetisiert",a=>pc(a,c=>c.lat)],["Sprachkurs besucht",a=>pc(a,c=>c.course)],["Häufigste Muttersprache",top]];
+ let h=`<div class="cmp"><div class="h">Merkmal</div><div class="h">${dot("e")}Erreicht</div><div class="h">${dot("t")}Auf Kurs</div><div class="h">${dot("r")}Gefährdet / nicht erreicht</div>`;
+ rows.forEach(r=>h+=`<div>${r[0]}</div><div>${r[1](grp.e)}</div><div>${r[1](grp.t)}</div><div>${r[1](grp.o)}</div>`);
+ h+=`</div>`;
+ const yrs={};R.filter(c=>c.g[k]!=="n").forEach(c=>{const y=c.entry.slice(0,4);(yrs[y]=yrs[y]||{e:0,t:0,r:0,x:0})[c.g[k]]++});
+ h+=`<h3 style="margin:22px 0 6px">Nach Einreisejahr</h3><table><tr><th>Jahr</th><th>Erreicht</th><th>Auf Kurs</th><th>Gefährdet</th><th>Abgelaufen</th></tr>${Object.keys(yrs).sort().map(y=>`<tr><td>${y}</td><td>${yrs[y].e}</td><td>${yrs[y].t}</td><td>${yrs[y].r}</td><td>${yrs[y].x}</td></tr>`).join("")}</table>`;
+ const hint=["Muster: Lateinische Schrift: Ja 85 % · Nein 32 % haben A1 erreicht. Wer einen Sprachkurs besucht hat, erreicht A1 deutlich häufiger. Offene Fälle ohne Kurs und ohne lateinische Schrift sind die erste Anlaufstelle.","Personen mit längerer Schulbildung und lateinischer Schrift haben häufiger Arbeit oder Ausbildung gefunden.","Haushalte mit einer Person in Vollzeit lösen sich eher von der Sozialhilfe. Haushalte ohne Erwerbsperson bleiben länger abhängig."][k];
+ return `<div class="note"><b>Muster in der Gruppe:</b> ${hint} <i>(Beispielwerte, Gruppenvergleich, kein Score pro Person)</i></div>`+h;
+}
+function renderCl(q="",flt=null,sel=null){
+ let list=R;if(flt)list=R.filter(c=>c.g[+flt[0]]===flt[1]);
+ const ql=q.trim().toLowerCase();let direct=new Set();
+ if(ql){const m=R.filter(c=>c.n.toLowerCase().includes(ql)||String(c.cn).includes(ql));const hs=new Set(m.map(c=>c.hh));direct=new Set(m.map(c=>c.id));list=R.filter(c=>hs.has(c.hh))}
+ const fl=flt?`<button class="chip" id="clr">Filter: Ziel ${+flt[0]+1}, ${ST[flt[1]][0]} ✕</button>`:"";
+ let h=`<div class="tools"><input id="q" type="search" placeholder="Name suchen, z. B. Layla" value="${q}" aria-label="Klient:in suchen"><button class="btn" id="add">Neue Klient:in</button></div>${fl}<div class="split"><div class="card" style="padding:8px"><table><tr><th>Name</th><th class="c">Ziel 1</th><th class="c">Ziel 2</th><th class="c">Ziel 3</th></tr>`;
+ h+=list.map(c=>`<tr class="row ${sel===c.id?"sel":""}" data-open="${c.id}"><td><span class="name">${c.n}</span><div class="hh">${c.nat} · ${c.age} J. · ${c.st}${ql&&!direct.has(c.id)?" · gleicher Haushalt":""}</div></td>${c.g.map(s=>`<td class="c" title="${ST[s][0]}">${dot(s)}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="4" class="empty">Keine Treffer.</td></tr>`;
+ h+=`</table></div><div class="card dos" id="dos">${sel===null?`<div class="empty">Klient:in auswählen, um das Dossier zu sehen.</div>`:dossier(R[sel])}</div></div>`;
+ $("#cl").innerHTML=h;CF=flt;
+ const qi=$("#q");qi.oninput=e=>{renderCl(e.target.value,flt,sel);const n=$("#q");n.focus();n.setSelectionRange(n.value.length,n.value.length)};
+ if($("#clr"))$("#clr").onclick=()=>renderCl(q,null,sel);
+ $("#add").onclick=()=>toast("Neuer Eintrag wird als Zeile im Excel-Export ergänzt (Mockup).");
+}
+let CF=null;
+function dossier(c){
+ const hh=R.filter(x=>x.hh===c.hh&&x.id!==c.id),u=U[c.id];
+ const sub=[[["Sprachkurs besucht",!!c.course],["A1-Nachweis vorhanden",c.g[0]==="e"]],[["Pensum ≥ 60 %",c.pens>=60],["6 Monate am Stück ("+c.mo+" Mt.)",c.mo>=6&&c.pens>=60],["Ausbildung Sek II / Tertiär",/Lehre/.test(c.work)]],[["12 Monate ohne Sozialhilfe ("+c.free+" Mt.)",c.free>=12]]];
+ const ck=b=>`<span style="color:var(${b?"--g":"--n"});font-weight:700">${b?"✓":"○"}</span>`;
+ let h=`<div class="top"><div><h2>${c.n}</h2><div class="meta">Klient ${c.cn} · ${c.nat}, ${c.mt} · ${c.age} Jahre · Status ${c.st} · Einreise ${fd(c.entry)} · Dossier ${c.hh}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn p" data-weg="${c.id}">⭐ Mein Weg</button><button class="btn" id="edit">Bearbeiten</button></div></div>`;
+ if(u)h+=`<div class="note" style="border-left:4px solid var(--r)"><span class="tag urg">Dringend</span> <b>${u.step}</b><br>${u.why}</div>`;
+ h+=`<div class="blk" style="border:0;padding-top:0"><h3>Haushalt</h3>${hh.length?hh.map(x=>`<button class="chip" data-open="${x.id}">${x.n}, ${x.age} J., Klient ${x.cn}</button>`).join(""):`<span style="color:var(--mute)">Einzelperson</span>`}</div>`;
+ h+=`<div class="blk"><h3>Hintergrund</h3><dl><dt>Schuljahre</dt><dd>${c.sy}</dd><dt>Lateinische Schrift</dt><dd>${c.lat?"kann lesen":"kann nicht lesen"}</dd><dt>Einreise</dt><dd>${fd(c.entry)}</dd></dl></div>`;
+ [["Sprache","lang"],["Arbeit und Ausbildung","work"],["Finanzen (Haushalt)","fin"]].forEach((b,k)=>{const s=c.g[k];
+  h+=`<div class="blk"><h3><span>${b[0]}</span><span class="tag">${dot(s)}${ST[s][0]}</span></h3><dl><dt>Stand</dt><dd>${c[b[1]]}</dd><dt>Frist Ziel ${k+1}</dt><dd>${c.dl[k]?fd(c.dl[k])+(dd(c.dl[k])>=0?` (in ${dd(c.dl[k])} Tagen)`:" (abgelaufen)"):"nicht anwendbar"}</dd></dl>${c.dl[k]?`<ul class="sub">${sub[k].map(x=>`<li>${ck(x[1])}${x[0]}</li>`).join("")}</ul>`:""}</div>`});
+ return h;
+}
+/* Mein Weg */
+const T={
+de:{},
+ar:{rtl:1,title:"طريقي",sub:"طريقك في سويسرا",intro:"هنا ترى أين أنت الآن وما هي الخطوة التالية.",name:"الاسم",nr:"رقم العميل",date:"التاريخ",b:["تم بنجاح","الآن","الهدف","الخطوة التالية"],h:["اللغة الألمانية","العمل","حياة بدون مساعدة اجتماعية"],a:"تم الوصول إلى المستوى A1. أحسنت!",l:"أنت تتعلم الألمانية.",g1:"الهدف: اللغة الألمانية A1 حتى",s1:"ننظّم معًا دورة مكثفة والامتحان.",w:"نوضّح معًا فرص العمل أو التدريب المهني.",g2:"الهدف: عمل بنسبة 60 % على الأقل أو تدريب مهني.",g3:"الهدف: 12 شهرًا بدون مساعدة اجتماعية.",f:"نناقش معًا الخطوات التالية.",contact:"الشخص المسؤول عنك",foot:"لستم وحدكم في هذا الطريق. نحن نرافقكم."},
+fa:{rtl:1,title:"راه من",sub:"راه شما در سویس",intro:"اینجا می‌بینید که در کجا هستید و قدم بعدی چیست.",name:"نام",nr:"شماره مراجع",date:"تاریخ",b:["انجام شد","اکنون","هدف","قدم بعدی"],h:["زبان آلمانی","کار","زندگی بدون کمک اجتماعی"],a:"سطح A1 به دست آمد. آفرین!",l:"شما آلمانی یاد می‌گیرید.",g1:"هدف: زبان آلمانی A1 تا",s1:"ما با هم یک کورس فشرده و امتحان را ترتیب می‌دهیم.",w:"ما با هم امکانات کار یا آموزش حرفه‌ای را روشن می‌کنیم.",g2:"هدف: کار حداقل ۶۰ ٪ یا آموزش حرفه‌ای.",g3:"هدف: ۱۲ ماه بدون کمک اجتماعی.",f:"ما با هم قدم‌های بعدی را بررسی می‌کنیم.",contact:"شخص مسئول شما",foot:"شما در این راه تنها نیستید. ما همراه شما هستیم."},
+uk:{title:"Мій шлях",sub:"Ваш шлях у Швейцарії",intro:"Тут видно, де ви зараз і який наступний крок.",name:"Ім’я",nr:"№ клієнта",date:"Дата",b:["Досягнуто","Зараз","Мета","Наступний крок"],h:["Німецька мова","Робота","Життя без соціальної допомоги"],a:"Рівень A1 досягнуто. Чудово!",l:"Ви вивчаєте німецьку.",g1:"Мета: німецька A1 до",s1:"Разом організуємо інтенсивний курс та іспит.",w:"Разом з’ясуємо можливості роботи або навчання.",g2:"Мета: робота від 60 % або професійна освіта.",g3:"Мета: 12 місяців без соціальної допомоги.",f:"Разом обговоримо наступні кроки.",contact:"Ваша контактна особа",foot:"На цьому шляху ви не самі. Ми поруч."},
+en:{title:"My path",sub:"Your path in Switzerland",intro:"Here you can see where you are and what comes next.",name:"Name",nr:"Client no.",date:"Date",b:["Done","Now","Goal","Next step"],h:["German","Work","Life without social assistance"],a:"Level A1 reached. Well done!",l:"You are learning German.",g1:"Goal: German A1 by",s1:"Together we will organise an intensive course and the exam.",w:"Together we will explore work or training options.",g2:"Goal: work at 60 % or more, or vocational education.",g3:"Goal: 12 months without social assistance.",f:"Together we will talk about the next steps.",contact:"Your contact person",foot:"You are not alone on this path. We will walk it with you."}};
+const DE={title:"Mein Weg",sub:"Ihr Weg in der Schweiz",intro:"Hier sehen Sie, wo Sie stehen und was als Nächstes kommt.",name:"Name",nr:"Klient-Nr.",date:"Datum",b:["Geschafft","Jetzt","Ziel","Nächster Schritt"],h:["Deutsch","Arbeit","Leben ohne Sozialhilfe"],a:"A1 erreicht. Gut gemacht!",l:"Sie lernen Deutsch.",g1:"Ziel: Deutsch A1 bis",s1:"Wir organisieren gemeinsam einen Intensivkurs und die Prüfung.",w:"Wir klären gemeinsam Arbeit oder Ausbildung.",g2:"Ziel: Arbeit ab 60 % oder Ausbildung.",g3:"Ziel: 12 Monate ohne Sozialhilfe.",f:"Wir besprechen gemeinsam die nächsten Schritte.",contact:"Ihre Ansprechperson",foot:"Sie sind auf diesem Weg nicht allein. Wir begleiten Sie."};
+const LN={ar:"Arabisch",fa:"Dari",uk:"Ukrainisch",en:"Englisch"},MT={Arabisch:"ar",Dari:"fa",Ukrainisch:"uk"};
+let WC=null;
+function openWeg(id,lang){
+ WC=R[id];const nat=MT[WC.mt],lg=lang||nat||"en";
+ $("#lg").innerHTML=Object.keys(LN).map(k=>`<option value="${k}" ${k===lg?"selected":""}>${LN[k]}${k===nat?" ★":""}</option>`).join("");
+ $("#sbd").innerHTML=sheet(WC,lg);if(!$("#sheet").open)$("#sheet").showModal();
+}
+function sheet(c,lg){
+ const t=T[lg],rtl=t.rtl?"rtl":"";
+ const first=c.g.findIndex((s,i)=>s!=="e"&&s!=="n"),stt=c.g.map((s,i)=>s==="e"||(s==="n"&&i<1)?"e":i===first?"c":"a");
+ const col={e:"#2E7D4F",c:"#D9A200",a:"#9AA3AD"},ic=["💬","🛠️","🏡"];
+ const svg=`<svg viewBox="0 0 400 70" width="100%" style="max-width:420px;display:block;margin:6px auto"><line x1="60" y1="35" x2="340" y2="35" stroke="#9AA3AD" stroke-width="3" stroke-dasharray="7 6"/>${[60,200,340].map((x,i)=>`<circle cx="${x}" cy="35" r="26" fill="${col[stt[i]]}"/><text x="${x}" y="44" text-anchor="middle" font-size="26">${ic[i]}</text>`).join("")}</svg>`;
+ const row=(bi,sym,cls,de,tr)=>`<div class="rw"><div><span class="bd ${cls}">${sym} ${DE.b[bi]}</span>${de}</div><div class="${rtl}"><span class="bd ${cls}">${sym} ${t.b[bi]}</span>${tr}</div></div>`;
+ const g=c.dl[0]?fd(c.dl[0]):"";let box="";
+ [0,1,2].forEach(i=>{let r="";const s=stt[i];
+  if(s==="e")r=row(0,"✓","gk",i===0?DE.a:DE["g"+(i+1)],i===0?t.a:t["g"+(i+1)]);
+  else{ if(s==="c"&&i<2)r+=row(1,"●","yl",i===0?DE.l:DE.w,i===0?t.l:t.w);
+   r+=row(2,"◎","",i===0?DE.g1+" "+g:DE["g"+(i+1)],i===0?t.g1+" "+g:t["g"+(i+1)]);
+   if(s==="c")r+=row(3,"→","yl",i===0?DE.s1:DE.f,i===0?t.s1:t.f)}
+  box+=`<div class="bx"><h3><span>${ic[i]} ${DE.h[i]}</span><span class="${rtl}">${t.h[i]}</span></h3>${r}</div>`});
+ return `<div class="a4"><div class="t2"><h1>${DE.title}</h1><h1 class="${rtl}">${t.title}</h1></div><div class="t2 sub"><span>${DE.sub}</span><span class="${rtl}">${t.sub}</span></div>
+ <p>${DE.name} / ${t.name}: <span class="ln">&nbsp;</span> &nbsp;·&nbsp; ${DE.nr} / ${t.nr}: <b>${c.cn}</b> &nbsp;·&nbsp; ${DE.date} / ${t.date}: <b>${fd("2026-11-21")}</b></p>
+ <div class="rw" style="border:0"><div>${DE.intro}</div><div class="${rtl}">${t.intro}</div></div>${svg}${box}
+ <div class="foot"><div>${DE.contact}: <b>Marco Steiner</b><br>Asylsozialdienst Stadt Bern<br>${DE.foot}</div><div class="${rtl}">${t.contact}: <b>Marco Steiner</b><br>${t.foot}</div></div></div>`}
+$("#lg").onchange=e=>openWeg(WC.id,e.target.value);
+$("#pr").onclick=()=>window.print();$("#sx").onclick=()=>$("#sheet").close();
+function showTab(t){document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===t));$("#ov").hidden=t!=="ov";$("#cl").hidden=t!=="cl"}
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-tab],[data-det],[data-open],[data-flt],[data-weg],[data-cal],[data-day],#allt,#allt2,#edit");if(!b)return;
+ if(b.dataset.tab)showTab(b.dataset.tab);
+ else if(b.dataset.weg!==undefined){$("#dlg").close();openWeg(+b.dataset.weg)}
+ else if(b.dataset.det!==undefined){const g=GOALS[+b.dataset.det];openD(g.t+" · Analyse",`<p class="rule" style="margin-top:10px">${g.rule}</p>`+analysis(g.k))}
+ else if(b.id==="allt"||b.id==="allt2")openD("Anstehende Fristen",`<p class="rule" style="margin-top:10px">Nächste 12 Monate sowie überfällige Fristen, sortiert nach Datum.</p>`+tasks(-400,365).map(taskRow).join(""));
+ else if(b.dataset.cal){const v=b.dataset.cal;if(v==="today")cal.y=2026;else if(v[0]==="y")cal.y+=+v.slice(1);else if(v[0]==="g")cal.g=+v.slice(2);renderCal()}
+ else if(b.dataset.day)dayList(b.dataset.day);
+ else if(b.dataset.flt){showTab("cl");renderCl("",b.dataset.flt)}
+ else if(b.id==="edit")toast("Felder werden editierbar, Änderungen landen im Excel-Export (Mockup).");
+ else if(b.dataset.open!==undefined){$("#dlg").close();showTab("cl");const q=$("#q")?$("#q").value:"";renderCl(q,CF,+b.dataset.open);$("#dos").scrollIntoView({block:"nearest"})}
+});
+renderOv();renderCl();
+</script>
+</body>
+</html>

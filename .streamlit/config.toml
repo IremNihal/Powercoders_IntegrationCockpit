@@ -1,0 +1,39 @@
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+
+[server]
+# Feste Adresse: sonst fragt Streamlit beim Start checkip.amazonaws.com nach der öffentlichen IP.
+# Auf dem Server im Netz der Stadt hier dessen interne Adresse eintragen.
+address = "localhost"
+maxUploadSize = 50
+enableStaticServing = true
+
+# Schrift liegt lokal in /static (keine Anfrage an Google Fonts oder andere Server)
+[[theme.fontFaces]]
+family = "Atkinson"
+url = "app/static/atkinson-hyperlegible-latin-400-normal.woff2"
+weight = 400
+
+[[theme.fontFaces]]
+family = "Atkinson"
+url = "app/static/atkinson-hyperlegible-latin-700-normal.woff2"
+weight = 700
+
+[theme]
+base = "light"
+font = "Atkinson, sans-serif"
+headingFont = "Atkinson, sans-serif"
+primaryColor = "#0f6e73"
+backgroundColor = "#eef1f5"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#15202b"
+borderColor = "#d5dbe2"
+baseRadius = "8px"
+showWidgetBorder = true
+
+[theme.sidebar]
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#eef1f5"

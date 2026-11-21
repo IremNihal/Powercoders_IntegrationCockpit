@@ -1,0 +1,8 @@
+daten/export/*
+!daten/export/.gitkeep
+__pycache__/
+*.pyc
+daten/*.sqlite
+.venv/
+.env
+__pycache__/
