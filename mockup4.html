@@ -108,6 +108,12 @@ th.c,td.c{text-align:center;width:74px}
 .dm{position:absolute;top:5px;transform:translateX(-50%);font-size:20px;line-height:24px;pointer-events:none}
 .td{position:absolute;top:0;bottom:0;width:2px;background:var(--brand);pointer-events:none}
 </style>
+<style>
+/* Dialoge im Streamlit-iframe: Kopf fix, Inhalt scrollbar, nicht höher als sichtbarer Bereich */
+dialog{display:flex;flex-direction:column;max-height:92vh;top:4vh;margin-top:4vh}
+.dh,.sheetbar{flex:0 0 auto}
+.db,#sbd{overflow:auto;-webkit-overflow-scrolling:touch;flex:1 1 auto;min-height:0}
+</style>
 </head>
 <body>
 <header>
@@ -133,7 +139,7 @@ const GOALS=[
  {k:1,t:"Ziel 2 · Arbeit oder Ausbildung",rule:"≥ 60 % während 6 Monaten am Stück oder Sek II / Tertiär, vor Zuständigkeitsende"},
  {k:2,t:"Ziel 3 · Ohne Sozialhilfe",rule:"12 Monate ohne Sozialhilfe für den ganzen Haushalt, vor Zuständigkeitsende"}];
 const D="D12.10130";
-const ALL=[
+const ALL = window.R_DATA ? window.R_DATA : [
 ["Layla",D,"Syrien","Arabisch",0,2,39,"2024-02-15","B-FL","rtt",["2027-02-15","2029-02-15","2029-02-15"],0,"A0 (Stand 17.05.2024), kein laufender Sprachkurs","Keine Anstellung","Sozialhilfe seit Einreise",0,0,0,20357],
 ["Omar (Ehemann)",D,"Syrien","Arabisch",1,10,46,"2024-02-15","B-FL","ett",["2027-02-15","2029-02-15","2029-02-15"],1,"A1 telc, erreicht am 18.09.2025","Gelegentliche Einsätze","Sozialhilfe (Haushalt)",0,0,0,20356],
 ["Yusuf (Sohn)",D,"Syrien","Arabisch",0,0,4,"2024-02-15","B-FL","nnt",["","","2029-02-15"],0,"Kind, unter 16 J.","Kita","Sozialhilfe (Haushalt)",0,0,0,20358],
@@ -147,8 +153,11 @@ const ALL=[
 ["Ali Mahmoud","H8","Irak","Arabisch",0,12,27,"2023-12-01","B-FL","eee",["2026-12-01","2028-12-01","2028-12-01"],1,"A1 telc, erreicht am 10.04.2025","Logistik, 100 % seit 01.2025","Ohne Sozialhilfe seit 20 Mt.",100,22,20,20308],
 ["Rahel Gebre","H9","Eritrea","Tigrinya",1,8,31,"2023-11-29","VA","rtt",["2026-11-29","2029-11-29","2029-11-29"],0,"A0, kein Kurs besucht","Gelegentlich, unregelmässig","Sozialhilfe seit Einreise",0,0,0,20309]
 ].map((a,i)=>({id:i,n:a[0],hh:a[1],nat:a[2],mt:a[3],lat:a[4],sy:a[5],age:a[6],entry:a[7],st:a[8],g:a[9].split(""),dl:a[10],course:a[11],lang:a[12],work:a[13],fin:a[14],pens:a[15],mo:a[16],free:a[17],cn:a[18],sw:["Marco Steiner","Marco Steiner","Marco Steiner","Marco Steiner","Sandra Keller","Sandra Keller","Sandra Keller","Lukas Baumann","Marco Steiner","Marco Steiner","Lukas Baumann","Marco Steiner"][i]}));
-let ROLE="sb",ME="Marco Steiner",R=ALL.filter(c=>c.sw===ME);
-const U={0:{step:"Intensivkurs und Prüfung organisieren",why:"Frist für das Sprachziel in 3 Monaten (15.02.2027). Letzter Stand: A0 (17.05.2024). Kein laufender Sprachkurs."}};
+// Fallführung (ME): bei echten Daten die mit den meisten Fällen, sonst der Mockup-Default.
+let ROLE="sb",ME=(window.R_DATA&&ALL.length?(function(){const c={};ALL.forEach(x=>c[x.sw]=(c[x.sw]||0)+1);return Object.keys(c).sort((a,b)=>c[b]-c[a])[0];})():"Marco Steiner"),R=ALL.filter(c=>c.sw===ME);
+// «Dringend»-Hinweistexte sind erfunden – bei echten Daten leer lassen (keine erfundenen Begründungen).
+const U = window.R_DATA ? {} : {0:{step:"Intensivkurs und Prüfung organisieren",why:"Frist für das Sprachziel in 3 Monaten (15.02.2027). Letzter Stand: A0 (17.05.2024). Kein laufender Sprachkurs."}};
+const _hs=document.querySelector("header h1 small"); if(window.R_DATA&&_hs)_hs.textContent="Asylsozialdienst Stadt Bern · Fallführung: "+ME+" (Demodaten)";
 const $=s=>document.querySelector(s);
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const fd=s=>s?new Date(s).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit",year:"numeric"}):"–";

@@ -87,13 +87,15 @@ with st.sidebar:
 import json
 
 r_json = json.dumps(build_daten.baue(d, stichtag), ensure_ascii=False)
-html = MOCKUP.read_text(encoding="utf-8")
 inject = f"<script>window.R_DATA = {r_json};</script>\n</head>"
-html = html.replace("</head>", inject, 1)
+html_cockpit = MOCKUP.read_text(encoding="utf-8").replace("</head>", inject, 1)
+html_mockup = MOCKUP4.read_text(encoding="utf-8").replace("</head>", inject, 1)
 
 tab_cockpit, tab_mockup = st.tabs(["Cockpit", "Mockup"])
 with tab_cockpit:
-    components.html(html, height=1500, scrolling=True)
+    components.html(html_cockpit, height=1500, scrolling=True)
 with tab_mockup:
-    # Klickbarer Mockup (Übersicht, Klient:innen, Fristenkalender, «Mein Weg», Management) – unverändert angezeigt
-    components.html(MOCKUP4.read_text(encoding="utf-8"), height=1500, scrolling=True)
+    # Klickbarer Mockup mit denselben Excel-Daten wie Cockpit (window.R_DATA).
+    # Höhe so gewählt, dass der iframe ins Fenster passt – sonst öffnen die <dialog>-Fenster
+    # ausserhalb des sichtbaren Bereichs. Ein einzelner Scrollbalken (im iframe) genügt.
+    components.html(html_mockup, height=820, scrolling=True)
