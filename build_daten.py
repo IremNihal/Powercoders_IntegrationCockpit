@@ -105,6 +105,7 @@ def baue(d: dict | None = None, stichtag="2026-11-21") -> list[dict]:
             "mo": _monate_aus_grund(r2.get("grund") if r2 is not None else ""),
             "free": _int((r3.get("tage_ohne_sh") // 30) if (r3 is not None and pd.notna(r3.get("tage_ohne_sh"))) else 0),
             "cn": _int(r.get("klientennr")),
+            "sw": _str(r.get("sozialarbeit"), "–"),   # Fallführung aus dem Klient-Export
         })
     return out
 
