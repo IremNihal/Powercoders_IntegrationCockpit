@@ -14,7 +14,26 @@ DB = BASIS / "daten" / "cockpit.sqlite"
 
 
 def quelle() -> Path:
-    return EXPORT if any(EXPORT.glob("*.xlsx")) else DEMO
+    """Echte Exporte, falls vorhanden; sonst Demodaten (werden bei Bedarf erzeugt).
+
+    Die Demodaten sind nicht versioniert (.gitignore), deshalb fehlen sie z. B. auf
+    dem Deploy-Server und werden beim ersten Start synthetisch erzeugt.
+    """
+    if any(EXPORT.glob("*.xlsx")):
+        return EXPORT
+    if not any(DEMO.glob("*.xlsx")):
+        _demo_erzeugen()
+    return DEMO
+
+
+def _demo_erzeugen():
+    import sys
+    tools = str(BASIS / "tools")
+    if tools not in sys.path:
+        sys.path.insert(0, tools)
+    from synthetische_daten import erzeugen
+    with st.spinner("Demodaten werden erzeugt …"):
+        erzeugen(400, DEMO)
 
 
 def ist_demo() -> bool:
