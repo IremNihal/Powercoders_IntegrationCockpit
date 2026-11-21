@@ -6,3 +6,11 @@ daten/*.sqlite
 .venv/
 .env
 __pycache__/
+
+# Excel-Exporte, Datenbank und Situationsanalyse-Berichte nie versionieren
+# (auch die synthetischen Demodaten bleiben lokal).
+*.xlsx
+*.xlsm
+daten/demo/
+daten/demo/situationsanalysen/
+vorlagen/
